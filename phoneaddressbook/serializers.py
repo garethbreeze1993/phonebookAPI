@@ -2,15 +2,16 @@ from rest_framework import serializers
 from phoneaddressbook.models import PhoneInfo
 from django.contrib.auth.models import User
 
-class PhoneInfoSerializer(serializers.ModelSerializer):
+class PhoneInfoSerializer(serializers.HyperlinkedModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
     class Meta:
         model = PhoneInfo
-        fields = ['id', 'first_name', 'last_name', 'relationship', 'mobile_number', 'landline_number']
+        fields = ['url','id', 'first_name', 'last_name', 'relationship', 'mobile_number', 'landline_number', 'owner']
         
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.HyperlinkedModelSerializer):
     numbers = serializers.PrimaryKeyRelatedField(many=True, queryset=PhoneInfo.objects.all())
     
     class Meta:
         model = User
-        fields = ['id', 'numbers', 'username']
+        fields = ['url', 'id', 'numbers', 'username']
         

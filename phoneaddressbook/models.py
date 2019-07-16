@@ -5,5 +5,5 @@ class PhoneInfo(models.Model):
     last_name = models.CharField(max_length=28)
     relationship = models.CharField(max_length=32)
     mobile_number = models.CharField(max_length=12)
-    landline_number = models.CharField(blank=True, null=True)
+    landline_number = models.CharField(max_length=12, blank=True, null=True)
     owner = models.ForeignKey('auth.User', related_name='numbers', on_delete=models.CASCADE)
