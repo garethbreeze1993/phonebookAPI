@@ -1,0 +1,8 @@
+<h1>Home Page</h1>
+
+    {% if user.is_authenticated %} <!-- This is an attribute of djangos model.user --> 
+		<a class="nav-item nav-link" href="{% url 'accounts:logout' %}" class="btn btn-simple">Log Out</a>
+	{% else %}
+	<a class="nav-item nav-link" href="{% url 'accounts:login' %}" class="btn btn-simple">Log In</a>
+	<a class="nav-item nav-link" href="{% url 'accounts:signup' %}" class="btn btn-simple">Sign Up</a>
+	{% endif %}
