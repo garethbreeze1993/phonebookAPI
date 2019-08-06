@@ -1,0 +1,6 @@
+<body>
+
+    {% for phone in phone_user %}
+        <a href="{% url 'addressbook:phone_entry' pk=phone.id %}">{{phone.first_name }} {{phone.last_name}}</a>
+    {% endfor %}
+</body>

@@ -1,0 +1,6 @@
+<body>
+
+    {% for user in user_list %}
+       <a href="{% url 'addressbook:usernumbers' pk=user.id %}"> {{user.username }}</a>
+    {% endfor %}
+</body>

@@ -19,8 +19,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('phoneaddressbook.urls'), name='home'),
+    path('', include('phoneaddressbook.urls')),
 	path('accounts/', include('accounts.urls')),
 	#path('api-auth/', include('rest_framework.urls')),  # this adds log in/ log out functionality
-	path('home/', TemplateView.as_view(template_name='home.html'), name='home')
-]
+	path('home/', TemplateView.as_view(template_name='home.html'), name='home'),
+	path('addresses/', include('addressbook.urls'))]
